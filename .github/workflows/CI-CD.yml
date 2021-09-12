@@ -26,4 +26,4 @@ jobs:
           host: ${{ secrets.AWS_HOST }}
           username: ${{ secrets.AWS_USERNAME }}
           key: ${{ secrets.AWS_KEY }}
-          script: /usr/local/bin/kubectl set image deployment/cloud-native-application-deployment cloud-native-application=danielcifuentes54/cloud-native-application:${{ secrets.AWS_KEY }}
+          script: /usr/local/bin/kubectl set image deployment/cloud-native-application-deployment cloud-native-application=danielcifuentes54/cloud-native-application:${{github.run_id}}
