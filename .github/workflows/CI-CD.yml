@@ -20,3 +20,10 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: ${{ github.repository }}
           tags: ${{ github.run_id }}
+      - name: Deploy to Kubernetes
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.AWS_HOST }}
+        username: ${{ secrets.AWS_USERNAME }}
+        key: ${{ secrets.AWS_KEY }}
+        script: kubectl set image deployment/cloud-native-application-deployment cloud-native-application=danielcifuentes54/cloud-native-application:${{ secrets.AWS_KEY }}
